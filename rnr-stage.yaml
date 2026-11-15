@@ -1,0 +1,17 @@
+yaml_version: 1
+stage: two_stage_riscv_i
+
+modules:
+  two_stage_riscv_i:
+    source_files:
+      - ALU/rtl.sv
+      - ALU_Control/rtl.sv
+      - Decoder/rtl.sv
+      - EX_Stage/rtl.sv
+      - IF_Stage/rtl.sv
+      - IF_ID_Register/rtl.sv
+      - Immediate_Generator/rtl.sv
+      - Main_Control/rtl.sv
+      - Register_File/rtl.sv
+      - WB_Stage/rtl.sv
+      - Two_Stage_RISCV_I/rtl.sv
