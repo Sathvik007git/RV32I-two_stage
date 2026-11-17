@@ -1,8 +1,8 @@
 yaml_version: 1
-stage: two_stage_riscv_i
-
+stage: pipelined_riscv
 modules:
-  two_stage_riscv_i:
+  pipelined_riscv:
+    top_module: two_stage_riscv_i
     source_files:
       - ALU/rtl.sv
       - ALU_Control/rtl.sv
