@@ -1,7 +1,6 @@
 module two_stage_riscv_i (
     input  logic        clk,
     input  logic        reset,
-    input  logic        stall,
     input  logic [31:0] instruction,
     input  logic [31:0] mem_out,
     output logic [31:0] rs2_data,
@@ -9,9 +8,10 @@ module two_stage_riscv_i (
     output logic        mem_write,
     output logic        mem_read,
     output logic [2:0]  fn3,
-    output logic [6:0]  opcode,
     output logic [31:0] address
 );
+    logic        stall;
+    logic [6:0]  opcode;
     logic [31:0] fetch_pc_plus4;
     logic [31:0] instruction_q;
     logic [31:0] instruction_pc_q;
@@ -43,7 +43,8 @@ module two_stage_riscv_i (
     logic [1:0]  wb_select;
     logic [3:0]  alu_control;
     logic [31:0] writeback_data;
-
+    
+    assign stall = 1'b0;
     assign redirect_to_fetch = instruction_valid_q && !stall && redirect_from_execute;
     assign opcode = instruction_valid_q ? opcode_q : 7'b0;
     assign fn3 = instruction_valid_q ? funct3_q : 3'b0;
